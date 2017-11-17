@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Operators
 
 precedencegroup DecodingPrecedence {
-    associativity: right
+    associativity: left
     higherThan: CastingPrecedence
 }
 
