@@ -35,12 +35,20 @@ public func => (lhs: KeyPath, rhs: KeyPath) -> KeyPath {
     return KeyPath(lhs.keys + rhs.keys)
 }
 
+public func => (lhs: String, rhs: KeyPath) -> KeyPath {
+    return KeyPath([lhs] + rhs.keys)
+}
+
 public func => (lhs: OptionalKeyPath, rhs: OptionalKeyPath) -> OptionalKeyPath {
     return OptionalKeyPath(keys: lhs.keys + rhs.markingFirst(required: true).keys)
 }
 
 public func =>? (lhs: OptionalKeyPath, rhs: OptionalKeyPath) -> OptionalKeyPath {
     return OptionalKeyPath(keys: lhs.keys + rhs.keys)
+}
+
+public func =>? (lhs: String, rhs: OptionalKeyPath) -> OptionalKeyPath {
+    return OptionalKeyPath(keys: [OptionalKey(key: lhs, isRequired: true)] + rhs.keys)
 }
 
 public func => (lhs: OptionalKeyPath, rhs: KeyPath) -> OptionalKeyPath {

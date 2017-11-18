@@ -129,7 +129,7 @@ class DecodableTests: XCTestCase {
     
     func testDecodeRepositoryExampleShouldThrowMissingKeyException() {
         // given
-        let json = readJsonFile("missingKey.json")
+        let json = readJsonFile("MissingKey.json")
         
         // when
         do {
@@ -146,7 +146,7 @@ class DecodableTests: XCTestCase {
     
     func testDecodeRepositoryExampleShouldThrowTypeMismatchException() {
         // given
-        let json = readJsonFile("typeMismatch.json")
+        let json = readJsonFile("TypeMismatch.json")
         
         // when
         do {
@@ -163,7 +163,7 @@ class DecodableTests: XCTestCase {
     
     func testDecodeRepositoryExampleNestedShouldThrowTypeMismatchException() {
         // given
-        let json: NSDictionary = ["key": readJsonFile("typeMismatch.json")]
+        let json: NSDictionary = ["key": readJsonFile("TypeMismatch.json")]
         
         // when
         do {

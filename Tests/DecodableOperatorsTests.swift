@@ -9,6 +9,7 @@
 import XCTest
 import protocol Decodable.Decodable
 import enum Decodable.DecodingError
+import struct Decodable.KeyPath
 @testable import Decodable
 
 class DecodableOperatorsTests: XCTestCase {
@@ -71,15 +72,17 @@ class DecodableOperatorsTests: XCTestCase {
     }
 
 	// TODO: this does not compile with Swift 3
-//    func testDecodeNestedIntSuccess() {
-//        // given
-//        let value = 4
-//        let dictionary: NSDictionary = ["key1": ["key2": ["key3": value]]]
-//        // when
-//		let result: Int = try! dictionary => "key1" => "key2" => "key3"
-//        // then
-//        XCTAssertEqual(result, value)
-//    }
+    func testDecodeNestedIntSuccess() {
+        // given
+        let value = 4
+        let dictionary: NSDictionary = ["key1": ["key2": ["key3": value]]]
+        let path = try! dictionary => "key1"
+        let key3 : KeyPath = "key3"
+        // when
+        let result: Int = try! path => "key2" => key3
+        // then
+        XCTAssertEqual(result, value)
+    }
 
     func testDecodeNestedDictionaryCastingSuccess() {
         // given
